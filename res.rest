@@ -1,0 +1,15 @@
+GET http://localhost:8080/worker
+
+###
+
+GET http://localhost:8080/worker/46
+
+###
+
+
+POST http://localhost:8080/worker
+Content-Type: application/json
+
+{
+    "firstName":"eliyah Belay"
+}
