@@ -16,6 +16,7 @@ require('./DB/index')
 const cors = require('cors');
 
 const workerRouter = require('./Routing/workersRout');
+const userRouter = require('./Routing/userRout');
 
 const app = express();
 
@@ -32,3 +33,4 @@ app.get('/',(request,response)=>{
 })
 
 app.use('/worker',workerRouter);
+app.use('/user',userRouter);
