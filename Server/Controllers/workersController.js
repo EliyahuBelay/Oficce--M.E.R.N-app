@@ -5,8 +5,8 @@ const workers = require('../Models/workerModel');
 
 const GetAllWorkers = async (request,response)=>{
     await workers.find()
-    .then((result) => response.send(result)
-    .catch((err)=> response.status(404).send({massege:err})))
+    .then((result) => response.send(result))
+    .catch((err)=> response.status(404).json({err}))
 };
 
 const GetById = async (request,response)=>{

@@ -18,6 +18,16 @@ const cors = require('cors');
 const workerRouter = require('./Routing/workersRout');
 const userRouter = require('./Routing/userRout');
 
+
+//----------------importing the passport module-----------
+const passport = require('passport');
+//----------------importing the passport module-----------
+
+//----------importing the function from passport file and invoce the func-------
+require('./Config/passport')(passport);
+//----------importing the function from passport file and invoce the func-------
+
+
 const app = express();
 
 app.use(express.json());
@@ -31,6 +41,8 @@ app.listen(PORT);
 app.get('/',(request,response)=>{
     response.send({serverIsOnLine:true})
 })
+app.use(passport.initialize());
 
-app.use('/worker',workerRouter);
-app.use('/user',userRouter);
+app.use('/worker',passport.authenticate('jwt',{session:false}),workerRouter);
+
+app.use('/auth',userRouter);
